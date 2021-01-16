@@ -1,15 +1,15 @@
-import {createStore} from 'redux';
+import {FETCH_LAUNCH_REQUEST, FETCH_LAUNCH_SUCCESS, FETCH_LAUNCH_FAILURE, SET_LAUNCH_IND, SET_LANDING_IND, SET_YEAR} from '../actions/ACTION_TYPES';
 
-import {FETCH_LAUNCH_REQUEST, FETCH_LAUNCH_SUCCESS, FETCH_LAUNCH_FAILURE} from '../actions'
-
-const store = createStore(reducer);
 const initialState = {
     isLoading: false,
     launches: [],
+    launchYear: '',
+    isLaunchSuccessful: '',
+    isLandingSuccessful: '',
     err: ''
 };
 
-const reducer = (state = initialState, action) => {
+const mainReducer = (state = initialState, action) => {
     switch(action.type) {
         case FETCH_LAUNCH_REQUEST:
             return {
@@ -28,7 +28,24 @@ const reducer = (state = initialState, action) => {
                 launches: [],
                 err: action.payload
             };
+        case SET_LAUNCH_IND:
+            return {
+                ...state,
+                isLaunchSuccessful: action.payload
+            };
+        case SET_LANDING_IND:
+            return {
+                ...state,
+                isLandingSuccessful: action.payload
+            };
+        case SET_YEAR:
+            return {
+                ...state,
+                launchYear: action.payload
+            };
         default:
-            return;
+            return state;
     }
 }
+
+export default mainReducer;

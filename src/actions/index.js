@@ -1,23 +1,70 @@
-export const FETCH_LAUNCH_REQUEST = 'FETCH_LAUNCH_REQUEST';
-export const FETCH_LAUNCH_SUCCESS = 'FETCH_LAUNCH_SUCCESS';
-export const FETCH_LAUNCH_FAILURE = 'FETCH_LAUNCH_FAILURE';
+import axios from 'axios';
 
-const fetchLaunchRequest = () => {
+import {FETCH_LAUNCH_REQUEST, FETCH_LAUNCH_SUCCESS, FETCH_LAUNCH_FAILURE, SET_LAUNCH_IND, SET_LANDING_IND, SET_YEAR} from './ACTION_TYPES';
+
+export const fetchLaunchRequest = () => {
     return {
-        type: FETCH_LAUNCH_REQUEST
+        type: FETCH_LAUNCH_REQUEST,
     };
 };
 
-const fetchLaunchSuccess = (launches) => {
+export const fetchLaunchSuccess = (launches) => {
     return {
         type: FETCH_LAUNCH_SUCCESS,
         payload: launches
     };
 };
 
-const fetchLaunchFailure = (err) => {
+export const fetchLaunchFailure = (err) => {
     return {
         type: FETCH_LAUNCH_FAILURE,
         payload: err
     };
 };
+
+export const setIsLaunchSuccessfulValue = (value) => {
+    return {
+        type: SET_LAUNCH_IND,
+        payload: value
+    };
+}
+
+export const setIsLandingSuccessfulValue = (value) => {
+    return {
+        type: SET_LANDING_IND,
+        payload: value
+    };
+}
+
+export const setLaunchYear = (year) => {
+    return {
+        type: SET_YEAR,
+        payload: year
+    };
+}
+
+export const fetchLaunch = () => {
+    return (dispatch, getState) => {
+        dispatch(fetchLaunchRequest);
+        const { launchYear, isLaunchSuccessful, isLandingSuccessful } = getState();
+        let URL;
+        if (launchYear !== '' && isLaunchSuccessful !== '' && isLandingSuccessful !== '') {
+            URL = `https://api.spacexdata.com/v3/launches?limit=100&launch_success=${isLaunchSuccessful}&land_success=${isLandingSuccessful}&launch_year=${launchYear}`;
+        } else if (launchYear !== '' && isLaunchSuccessful !== '' && isLandingSuccessful === '') {
+            URL = `https://api.spacexdata.com/v3/launches?limit=100&launch_success=${isLaunchSuccessful}&launch_year=${launchYear}`;
+        } else if (launchYear !== '' && isLandingSuccessful !== '' && isLaunchSuccessful === '') {
+            URL = `https://api.spacexdata.com/v3/launches?limit=100&land_success=${isLandingSuccessful}&launch_year=${launchYear}`;
+        } else {
+            URL = `https://api.spacexdata.com/v3/launches?limit=100`;
+        }
+        axios.get(URL)
+        .then(res => {
+            const launches = res.data;
+            dispatch(fetchLaunchSuccess(launches));
+        })
+        .catch(err => {
+            const errMsg = err.message;
+            dispatch(fetchLaunchFailure(errMsg));
+        })
+    }
+}
