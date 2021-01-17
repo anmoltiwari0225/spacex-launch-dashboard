@@ -47,7 +47,6 @@ export const fetchLaunch = () => {
     return (dispatch, getState) => {
         dispatch(fetchLaunchRequest);
         const { launchYear, isLaunchSuccessful, isLandingSuccessful } = getState();
-        console.log(`launchYear: ${launchYear}, isLandingSuccessful: ${isLandingSuccessful}, isLaunchSuccessful: ${isLaunchSuccessful}`);
         let URL;
         if (launchYear !== '' && isLaunchSuccessful !== '' && isLandingSuccessful !== '') {
             URL = `https://api.spacexdata.com/v3/launches?limit=100&launch_success=${isLaunchSuccessful}&land_success=${isLandingSuccessful}&launch_year=${launchYear}`;
