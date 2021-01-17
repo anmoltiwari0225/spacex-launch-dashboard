@@ -41,3 +41,11 @@ Builds the app for production to the `server-build` folder.\
 
 Runs the app in the development mode.\
 Open [http://localhost:8000](http://localhost:8000) to view it in the browser in Server Side Rendered mode.
+
+## Live website
+
+The URL to the website is [https://spacex-launch-board.herokuapp.com/](https://spacex-launch-board.herokuapp.com/)
+
+## Lighthouse report
+
+The PWA lighthouse report can be found in Lighthouse Report.pdf
