@@ -14,10 +14,15 @@ const store = createStore(mainReducer, applyMiddleware(thunk, logger));
 function App() {
   return (
     <Provider store={store}>
-      <div>
-        <h2>SpaceX Launch Programs</h2>
+      <div className="container">
+        <div className="nav">
+          <h2>SpaceX Launch Programs</h2>
+        </div>
         <FilterBox />
         <Dashboard />
+        <div className="footer">
+          <p>Developed By Anmol Tiwari</p>
+        </div>
       </div>
     </Provider>
   );

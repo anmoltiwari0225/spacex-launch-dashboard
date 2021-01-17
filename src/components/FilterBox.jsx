@@ -62,15 +62,16 @@ function FilterBox(props) {
     }
 
     return (
-        <div>
+        <div className="sidebar">
             <h3>
                 Filters
             </h3>
-            <h5>
-                Launch Year
-            </h5>
             <hr />
-            <div>
+            <div className="filter-box">
+                <h5 className="filter-subheading">
+                    Launch Year
+                </h5>
+                <hr />
                 <button className="button-toggle" onClick={() => onChangeFilter('2006')}>2006</button>
                 <button className="button-toggle" onClick={() => onChangeFilter('2007')}>2007</button>
                 <br />
@@ -93,20 +94,20 @@ function FilterBox(props) {
                 <button className="button-toggle" onClick={() => onChangeFilter('2019')}>2019</button>
                 <br />
                 <button className="button-toggle" onClick={() => onChangeFilter('2020')}>2020</button>
-            </div>
-            <h5>Launch Successful</h5>
-            <hr />
-            <div>
+                <h5 className="filter-subheading">
+                    Launch Successful
+                </h5>
+                <hr />
                 <button className="button-toggle" onClick={() => onChangeLaunchSuccessful(true)}>True</button>
                 <button className="button-toggle" onClick={() => onChangeLaunchSuccessful(false)}>False</button>
-            </div>
-            <h5>Landing Successful</h5>
-            <hr />
-            <div>
+                <h5 className="filter-subheading">
+                    Landing Successful
+                </h5>
+                <hr />
                 <button className="button-toggle" onClick={() => onChangeLandingSuccessful(true)}>True</button>
                 <button className="button-toggle" onClick={() => onChangeLandingSuccessful(false)}>False</button>
-            </div>
         </div>
+    </div>
     )
 };
 

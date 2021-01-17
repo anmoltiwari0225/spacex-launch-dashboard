@@ -2,22 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Card from './Card';
+import './Dashboard.css';
 
 function Dashboard(props) {
+    
     return (
-        <div>
-            <h1>
-                Launch Dashboard   
-            </h1>
-            <div className="row">
-                    {props.launches.map((launch, key) => {
-                        return (
-                            <div className="column">
-                                <Card key={key} launch={launch} />
-                            </div>
-                        );
-                    })}
-            </div>
+        <div className="main">
+            {props.launches.map((launch, key) => {
+                return (
+                        <Card key={key} launch={launch} />
+                );
+            })}
         </div>
     )
 }

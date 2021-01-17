@@ -1,7 +1,31 @@
-  /* Style the counter cards */
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: #000000;
+    width: 150px;
+    margin: 10px;
+}
+
+span .mission-details {
+  color:#4915dace;
+}
+
+@media (max-width:700px) {
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #ffffff;
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: #000000;
+    width: 100%;
+    margin: 10px;
   }
+}
