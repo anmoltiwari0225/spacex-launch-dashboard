@@ -18,12 +18,14 @@ const mainReducer = (state = initialState, action) => {
             };
         case FETCH_LAUNCH_SUCCESS:
             return {
+                ...state,
                 isLoading: false,
                 launches: action.payload,
                 err: ''
             };
         case FETCH_LAUNCH_FAILURE:
             return {
+                ...state,
                 isLoading: false,
                 launches: [],
                 err: action.payload
