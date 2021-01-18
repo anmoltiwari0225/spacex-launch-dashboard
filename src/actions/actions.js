@@ -56,9 +56,16 @@ export const fetchLaunch = () => {
             URL = `https://api.spacexdata.com/v3/launches?limit=100&land_success=${isLandingSuccessful}&launch_year=${launchYear}`;
         } else if (launchYear !== '' && isLandingSuccessful === '' && isLaunchSuccessful === '') {
             URL = `https://api.spacexdata.com/v3/launches?limit=100&launch_year=${launchYear}`;
+        } else if (launchYear === '' && isLandingSuccessful !== '' && isLaunchSuccessful !== '') {
+            URL = `https://api.spacexdata.com/v3/launches?limit=100&launch_success=${isLaunchSuccessful}&land_success=${isLandingSuccessful}`;
+        } else if (launchYear === '' && isLandingSuccessful !== '' && isLaunchSuccessful === '') {
+            URL = `https://api.spacexdata.com/v3/launches?limit=100&land_success=${isLandingSuccessful}`;
+        } else if (launchYear === '' && isLandingSuccessful === '' && isLaunchSuccessful !== '') {
+            URL = `https://api.spacexdata.com/v3/launches?limit=100&launch_success=${isLaunchSuccessful}`;
         } else {
             URL = `https://api.spacexdata.com/v3/launches?limit=100`;
         }
+
         axios.get(URL)
         .then(res => {
             const launches = res.data;

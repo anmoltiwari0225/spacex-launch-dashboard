@@ -9,7 +9,7 @@ function FilterBox(props) {
     const onChangeLaunchSuccessful = (value) => {
         switch(value) {
             case true:
-                if(props.isLaunchSuccessful === true) {
+                if(props.isLaunchSuccessful.toString() === "true") {
                     props.setIsLaunchSuccessfulValue('');
                 } else {
                     props.setIsLaunchSuccessfulValue(true);
@@ -17,7 +17,7 @@ function FilterBox(props) {
                 props.fetchLaunch();
                 return;
             case false:
-                if(props.isLaunchSuccessful === false) {
+                if(props.isLaunchSuccessful.toString() === "false") {
                     props.setIsLaunchSuccessfulValue('');
                 } else {
                     props.setIsLaunchSuccessfulValue(false);
