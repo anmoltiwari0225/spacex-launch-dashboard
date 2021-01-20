@@ -4,3 +4,4 @@ export const FETCH_LAUNCH_FAILURE = 'FETCH_LAUNCH_FAILURE';
 export const SET_LAUNCH_IND = 'SET_LAUNCH_IND';
 export const SET_LANDING_IND = 'SET_LANDING_IND';
 export const SET_YEAR = 'SET_YEAR';
+export const SET_SELECT_ACTION = 'SET_SELECT_ACTION';

@@ -1,4 +1,4 @@
-import {FETCH_LAUNCH_REQUEST, FETCH_LAUNCH_SUCCESS, FETCH_LAUNCH_FAILURE, SET_LAUNCH_IND, SET_LANDING_IND, SET_YEAR} from '../actions/ACTION_TYPES';
+import {FETCH_LAUNCH_REQUEST, FETCH_LAUNCH_SUCCESS, FETCH_LAUNCH_FAILURE, SET_LAUNCH_IND, SET_LANDING_IND, SET_YEAR, SET_SELECT_ACTION} from '../actions/ACTION_TYPES';
 
 const initialState = {
     isLoading: false,
@@ -6,6 +6,7 @@ const initialState = {
     launchYear: '',
     isLaunchSuccessful: '',
     isLandingSuccessful: '',
+    isSelected: false,
     err: ''
 };
 
@@ -44,6 +45,11 @@ const mainReducer = (state = initialState, action) => {
             return {
                 ...state,
                 launchYear: action.payload
+            };
+        case SET_SELECT_ACTION:
+            return {
+                ...state,
+                isSelected: action.payload
             };
         default:
             return state;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {FETCH_LAUNCH_REQUEST, FETCH_LAUNCH_SUCCESS, FETCH_LAUNCH_FAILURE, SET_LAUNCH_IND, SET_LANDING_IND, SET_YEAR} from './ACTION_TYPES';
+import {FETCH_LAUNCH_REQUEST, FETCH_LAUNCH_SUCCESS, FETCH_LAUNCH_FAILURE, SET_LAUNCH_IND, SET_LANDING_IND, SET_YEAR, SET_SELECT_ACTION} from './ACTION_TYPES';
 
 export const fetchLaunchRequest = () => {
     return {
@@ -40,6 +40,13 @@ export const setLaunchYear = (year) => {
     return {
         type: SET_YEAR,
         payload: year
+    };
+}
+
+export const setSelectAction = (val) => {
+    return {
+        type: SET_SELECT_ACTION,
+        payload: val
     };
 }
 
