@@ -4,7 +4,7 @@ import './Card.css';
 function Card(props) {
     return (
         <div className="card">
-            <img src={props.launch.links.mission_patch} alt={`Mission Patch`} style={{"width":"70%"}} />
+            <img src={props.launch.links.mission_patch} alt={`Mission Patch`} style={{"width":"60%"}} />
                 <h5><b>Mission Name: </b><span className="mission-details">{props.launch.mission_name !== ''?props.launch.mission_name: "N.A."}</span></h5>
                 <h5><b>Mission ID: </b> <span className="mission-details">{props.launch.mission_id.toString() !== ""? props.launch.mission_id: "N.A."}</span></h5>
                 <h5><b>Launch Year: </b> <span className="mission-details">{props.launch.launch_year !== ''? props.launch.launch_year: "N.A."}</span></h5>
